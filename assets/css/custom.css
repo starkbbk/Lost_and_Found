@@ -1,0 +1,166 @@
+/* Deep Glassmorphism Theme Overrides */
+
+:root {
+    --text-main: #2c2c2c;
+    --text-muted: #555555;
+    --primary-color: #ff9900;
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --border-radius: 20px;
+    --blur-amt: 15px;
+}
+
+body {
+    background: url('../img/background.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    font-family: 'Poppins', sans-serif !important;
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* Glass Mixin Class for reuse if needed, but we apply directly to components */
+
+/* Card Styling - The Core Glass Element */
+.card,
+.card-header,
+.card-footer {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(var(--blur-amt)) !important;
+    -webkit-backdrop-filter: blur(var(--blur-amt)) !important;
+    border-radius: var(--border-radius) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: var(--glass-shadow) !important;
+    color: var(--text-main);
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    /* Slightly distinct header */
+}
+
+/* Navbar / Header */
+.header {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(var(--blur-amt)) !important;
+    box-shadow: var(--glass-shadow) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+    margin-bottom: 20px;
+}
+
+.header .search-bar input {
+    background: rgba(255, 255, 255, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--text-main);
+}
+
+/* Sidebar */
+.sidebar {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(var(--blur-amt)) !important;
+    border-right: 1px solid var(--glass-border) !important;
+    box-shadow: var(--glass-shadow);
+    margin-top: 20px;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    height: calc(100vh - 80px);
+    /* Adjust for margin */
+}
+
+.sidebar-nav .nav-link {
+    background: transparent !important;
+    color: var(--text-main) !important;
+    font-weight: 500;
+}
+
+.sidebar-nav .nav-link.active,
+.sidebar-nav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-nav .nav-link i {
+    color: var(--primary-color) !important;
+}
+
+/* Stats Cards Specifics */
+.info-card {
+    background: rgba(255, 255, 255, 0.4) !important;
+    /* Slightly more transparent */
+}
+
+.info-card h6 {
+    color: var(--text-main) !important;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.85) 0%, rgba(255, 204, 128, 0.85) 100%) !important;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #ff9900, #ffb74d) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+}
+
+/* Tables */
+.table {
+    --bs-table-bg: transparent !important;
+    background: transparent !important;
+    color: var(--text-main) !important;
+}
+
+.table thead th {
+    background: rgba(255, 255, 255, 0.4) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Inputs / Forms */
+.form-control {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(5px);
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 153, 0, 0.25);
+}
+
+/* Login Page Specifics */
+body.login-page {
+    /* Background is handled globally now, but ensure no overlay blocks it */
+    background-image: url('../img/background.png') !important;
+}
+
+body.login-page::before {
+    /* If there was a dark overlay, remove or lighten it */
+    content: none !important;
+}
+
+.login-page .card {
+    background: rgba(255, 255, 255, 0.55) !important;
+    /* Little more opaque for login readability */
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Logo */
+.logo span {
+    color: #444 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
