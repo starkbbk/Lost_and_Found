@@ -1,74 +1,68 @@
-# Lost and Found Information System
+# Lost and Found
 
-The Lost and Found Information System comprises two modules: Public and Management sites.
+The **Lost and Found** system is a web-based application designed to help manage and recover lost items. It consists of two main modules: a Public facing site for users to view and report items, and a Management site for administrators.
 
-## Management Site
-Accessible only to system administrators and staff, it requires valid credentials for access. Administrators manage system data, including user lists, categories, items, and system information. Staff members have limited permissions. Additionally, the management site enables dynamic updates to select public site content.
+## Features
 
-## Public Site
-Visitors can explore published unclaimed items, view various page content, and send inquiries or concerns. The posted item list can be filtered by category for easy navigation.
-This web application simplifies lost and found item management, enhancing user experience and efficiency.
-
-## Features and Functionalities
-
-### Management
-
-- **Login and Logout**
-- **Dashboard**
-- **List Summary**
-- **Image Slider**
-- **Category Management**
-  - Add New Category
-  - List All Categories
-  - View Category Details
-  - Update Category Details
-  - Delete Category
-- **Item Management**
-  - Add New Item
-  - List All Items
-  - View Item Details
-  - Update Item Details
-  - Delete Item
-- **User Management**
-  - Add New User
-  - List All Users
-  - Update User Details
-  - Delete User
-- **Messages Management**
-  - List All Messages/Inquiries
-  - Read Message Details
-  - Delete Message
-- **Page Management**
-  - Home Page Content
-  - "About Us" Content
-  - Update Contact Information
-  - Update Account Details
-  - Update System Information
+### Management (Admin Side)
+- **Dashboard**: Overview of system status.
+- **Category Management**: Create, update, and delete item categories.
+- **Item Management**: Manage lost and found items.
+- **User Management**: Manage system users (Admins/Staff).
+- **Inquiries**: View and manage messages from the public.
+- **System Settings**: Update site information, logo, and content.
 
 ### Public Site
+- **Home Page**: Welcome page with latest information.
+- **Lost and Found List**: Browse and search for reported items.
+- **Report/Post Item**: Users can submit items they have found.
+- **Contact Us**: Send inquiries to the administration.
 
-- **Home Page**
-- **List All Published Lost and Found Items**
-- **Filter Lost and Found Item List by Category**
-- **Post an Item that has been found (subject to approval)**
-- **"About Us" Page**
-- **Contact Information Page**
-- **Send Message**
+## Installation and Setup
 
-### How To Run ?
+### Prerequisites
+- PHP >= 7.0
+- MySQL Database
+- Web Server (Apache/Nginx or PHP built-in server)
 
-**Requirements:**
-1. Download and install a local web server like XAMPP.
+### Setup Steps
 
-**System Installation/Setup:**
-1. Launch XAMPP and start both Apache and MySQL services.
-2. Download the source code zip file.
-3. Extract the contents of the downloaded zip file.
-4. Copy the extracted source code folder and paste it into the "htdocs" directory of XAMPP.
-5. Open a web browser and access PHPMyAdmin by entering this address: http://localhost/phpmyadmin.
-6. In PHPMyAdmin, create a new database and name it "lfis_db."
-7. Import the provided SQL file, which can be found as "lfis_db.sql" in the database folder.
-8. Finally, open the Lost and Found Information System in your web browser by visiting this address: http://localhost/php-lfis/.
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/starkbbk/Lost_and_Found.git
+    cd Lost_and_Found
+    ```
 
-Following these steps will set up the system for you to run and use.
+2.  **Database Configuration**
+    - Create a new MySQL database named `lfis_db`.
+    - Import the provided SQL file: `database/lfis_db.sql` into your new database.
 
+3.  **Application Configuration**
+    - Open `initialize.php` and verify the database credentials and `base_url`.
+    - By default, it is configured for `root` user with no password and `http://localhost:8080/`.
+    ```php
+    if(!defined('base_url')) define('base_url','http://localhost:8080/');
+    if(!defined('DB_SERVER')) define('DB_SERVER',"localhost");
+    if(!defined('DB_USERNAME')) define('DB_USERNAME',"root");
+    if(!defined('DB_PASSWORD')) define('DB_PASSWORD',"");
+    if(!defined('DB_NAME')) define('DB_NAME',"lfis_db");
+    ```
+
+4.  **Running the Application**
+
+    **Option A: Using PHP Built-in Server**
+    ```bash
+    php -S localhost:8080
+    ```
+    Access the site at [http://localhost:8080](http://localhost:8080).
+
+    **Option B: Using XAMPP/WAMP**
+    - Copy the project folder to your `htdocs` or `www` directory.
+    - Update `base_url` in `initialize.php` to match your local path (e.g., `http://localhost/Lost_and_Found/`).
+    - Access via your browser.
+
+## Credentials
+- **Admin Login**: Access at `/admin`
+- Default Admin credentials (if using sample data):
+    - Username: `admin`
+    - Password: `admin123` (or check database for default users)
