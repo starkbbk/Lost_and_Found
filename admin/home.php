@@ -71,66 +71,74 @@
       <!-- Stats Cards -->
       <!-- Categories Active -->
       <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="card info-card stat-card">
-          <div class="card-body">
-            <h5 class="card-title">Active Categories</h5>
-            <?php 
-            $categories = $conn->query("SELECT * FROM `category_list` where `status` = 1")->num_rows;
-            ?>
-            <div class="d-flex align-items-center">
-                <h6><?= format_num($categories) ?></h6>
+        <a href="<?= base_url ?>admin/?page=categories" class="text-decoration-none">
+            <div class="card info-card stat-card">
+            <div class="card-body">
+                <h5 class="card-title">Active Categories</h5>
+                <?php 
+                $categories = $conn->query("SELECT * FROM `category_list` where `status` = 1")->num_rows;
+                ?>
+                <div class="d-flex align-items-center">
+                    <h6><?= format_num($categories) ?></h6>
+                </div>
+                <i class="bi bi-grid-fill stat-icon"></i>
             </div>
-            <i class="bi bi-grid-fill stat-icon"></i>
-          </div>
-        </div>
+            </div>
+        </a>
       </div>
 
       <!-- Categories Inactive -->
       <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="card info-card stat-card">
-          <div class="card-body">
-            <h5 class="card-title">Inactive Categories</h5>
-            <?php 
-            $categories_inactive = $conn->query("SELECT * FROM `category_list` where `status` = 0")->num_rows;
-            ?>
-             <div class="d-flex align-items-center">
-                <h6><?= format_num($categories_inactive) ?></h6>
+        <a href="<?= base_url ?>admin/?page=categories" class="text-decoration-none">
+            <div class="card info-card stat-card">
+            <div class="card-body">
+                <h5 class="card-title">Inactive Categories</h5>
+                <?php 
+                $categories_inactive = $conn->query("SELECT * FROM `category_list` where `status` = 0")->num_rows;
+                ?>
+                <div class="d-flex align-items-center">
+                    <h6><?= format_num($categories_inactive) ?></h6>
+                </div>
+                <i class="bi bi-grid stat-icon"></i>
             </div>
-            <i class="bi bi-grid stat-icon"></i>
-          </div>
-        </div>
+            </div>
+        </a>
       </div>
 
        <!-- Items Pending -->
        <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="card info-card stat-card">
-          <div class="card-body">
-            <h5 class="card-title">Pending Items</h5>
-            <?php 
-            $items_pending = $conn->query("SELECT * FROM `item_list` where `status` = 0")->num_rows;
-            ?>
-             <div class="d-flex align-items-center">
-                <h6><?= format_num($items_pending) ?></h6>
+        <a href="<?= base_url ?>admin/?page=items" class="text-decoration-none">
+            <div class="card info-card stat-card">
+            <div class="card-body">
+                <h5 class="card-title">Pending Items</h5>
+                <?php 
+                $items_pending = $conn->query("SELECT * FROM `item_list` where `status` = 0")->num_rows;
+                ?>
+                <div class="d-flex align-items-center">
+                    <h6><?= format_num($items_pending) ?></h6>
+                </div>
+                <i class="bi bi-hourglass-split stat-icon"></i>
             </div>
-            <i class="bi bi-hourglass-split stat-icon"></i>
-          </div>
-        </div>
+            </div>
+        </a>
       </div>
 
       <!-- Items Published -->
       <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="card info-card stat-card">
-          <div class="card-body">
-             <h5 class="card-title">Published Items</h5>
-             <?php 
-             $items_published = $conn->query("SELECT * FROM `item_list` where `status` = 1")->num_rows;
-             ?>
-            <div class="d-flex align-items-center">
-                <h6><?= format_num($items_published) ?></h6>
+        <a href="<?= base_url ?>admin/?page=items" class="text-decoration-none">
+            <div class="card info-card stat-card">
+            <div class="card-body">
+                <h5 class="card-title">Published Items</h5>
+                <?php 
+                $items_published = $conn->query("SELECT * FROM `item_list` where `status` = 1")->num_rows;
+                ?>
+                <div class="d-flex align-items-center">
+                    <h6><?= format_num($items_published) ?></h6>
+                </div>
+                <i class="bi bi-check-circle-fill stat-icon"></i>
             </div>
-             <i class="bi bi-check-circle-fill stat-icon"></i>
-          </div>
-        </div>
+            </div>
+        </a>
       </div>
 
     </div>
