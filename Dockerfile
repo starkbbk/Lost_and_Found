@@ -3,8 +3,8 @@ FROM php:8.2-apache
 # Install base extensions
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-# Fix Apache MPM conflict (Ensure only prefork is enabled)
-RUN a2dismod mpm_event && a2dismod mpm_worker && a2enmod mpm_prefork rewrite
+# Fix Apache MPM conflict (Aggressive cleaning)
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf && a2enmod mpm_prefork rewrite
 
 # Copy application files
 COPY . /var/www/html/
