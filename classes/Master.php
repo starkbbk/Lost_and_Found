@@ -184,10 +184,12 @@ Class Master extends DBConnection {
 				imagedestroy($temp);
 			}
 			if(empty($id)){
-				if(!isset($founder))
-					$resp['msg'] = "New Item Data has been saved successfully.";
-					else
+				if(isset($type) && $type == 1)
 					$resp['msg'] = "Found Item Data successfully submitted. We'll review your submmited details first before publishin it to the public.";
+				elseif(isset($type) && $type == 2)
+					$resp['msg'] = "Lost Item Data successfully submitted. We'll review your submmited details first before publishin it to the public.";
+				else
+					$resp['msg'] = "New Item Data has been saved successfully.";
 			}else
 				$resp['msg'] = " Item Data has been updated successfully.";
 		}else{

@@ -20,6 +20,15 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 						<input type="hidden" name ="id" value="<?php echo isset($id) ? $id : '' ?>">
 						<div class="row">
 							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<label for="type" class="form-label">Type</label>
+							<select name="type" id="type" class="form-select" required="required">
+								<option value="1" <?= isset($type) && $type == 1 ? "selected" : "" ?>>Found</option>
+								<option value="2" <?= isset($type) && $type == 2 ? "selected" : "" ?>>Lost</option>
+							</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<label for="category_id" class="form-label">Category</label>
 							<select name="category_id" id="category_id" class="form-select" required="required">
 								<option value="" disabled <?= !isset($category_id) ? "selected" : "" ?>></option>
@@ -40,7 +49,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 						</div>
 						<div class="row">
 							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<label for="title" class="control-label">Title</label>
+								<label for="title" class="control-label">Item Name</label>
 								<input type="text" name="title" id="title" class="form-control form-control-sm rounded-0" value="<?php echo isset($title) ? $title : ''; ?>"  required/>
 							</div>
 						</div>

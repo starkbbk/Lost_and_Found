@@ -47,6 +47,13 @@ if(isset($_GET['cid'])){
                         </div>
                         <div class="card-body pt-3">
                             <h4 class="card-title"><?= $row['title'] ?></h4>
+                            <div class="mb-2">
+                                <?php if(isset($row['type']) && $row['type'] == 2): ?>
+                                    <span class="badge bg-danger rounded-pill">Lost</span>
+                                <?php else: ?>
+                                    <span class="badge bg-success rounded-pill">Found</span>
+                                <?php endif; ?>
+                            </div>
                             <p class="truncate-3"><?= strip_tags(htmlspecialchars_decode($row['description'])) ?></p>
                         </div>
                     </div>

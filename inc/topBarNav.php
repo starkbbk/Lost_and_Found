@@ -16,7 +16,10 @@
             <a href="<?= base_url.'?page=items' ?>" class="nav-link">Lost and Found</a>
         </li>
         <li class="nav-item pe-3">
-            <a href="<?= base_url.'?page=found' ?>" class="nav-link">Post an Item</a>
+            <a href="<?= base_url.'?page=found' ?>" class="nav-link">Post Found Item</a>
+        </li>
+        <li class="nav-item pe-3">
+            <a href="<?= base_url.'?page=lost' ?>" class="nav-link">Post Lost Item</a>
         </li>
         <li class="nav-item pe-3">
             <a href="<?= base_url."?page=about" ?>" class="nav-link">About</a>

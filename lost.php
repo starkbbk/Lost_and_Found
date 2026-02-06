@@ -1,4 +1,4 @@
-<h1 class="pageTitle text-center">Post Found Item</h1>
+<h1 class="pageTitle text-center">Post Lost Item</h1>
 <hr class="mx-auto bg-primary border-primary opacity-100" style="width:50px">
 <div class="row justify-content-center">
     <div class="col-lg-8 col-md-8 col-sm-12 col-12">
@@ -7,8 +7,7 @@
                 <h4 class="pageTitle">Please fill all the required fields</h4>
                 <form action="" id="item-form">
                     <input type="hidden" name ="id" value="<?php echo isset($id) ? $id : '' ?>">
-                    <input type="hidden" name="founder">
-                    <input type="hidden" name="type" value="1">
+                    <input type="hidden" name="type" value="2">
                     <div class="row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label for="category_id" class="form-label">Category</label>
@@ -25,7 +24,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label for="fullname" class="control-label">Founder Name</label>
+                            <label for="fullname" class="control-label">Owner Name</label>
                             <input type="text" name="fullname" id="fullname" class="form-control form-control-sm rounded-0" value="<?php echo isset($fullname) ? $fullname : ''; ?>"  autofocus required/>
                         </div>
                     </div>
@@ -110,7 +109,7 @@ $(document).ready(function(){
                 },
                 success:function(resp){
                     if(typeof resp =='object' && resp.status == 'success'){
-                        location.replace('./?page=found')
+                        location.replace('./?page=lost')
                     }else if(resp.status == 'failed' && !!resp.msg){
                         var el = $('<div>')
                             el.addClass("alert alert-danger err-msg").text(resp.msg)

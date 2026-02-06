@@ -31,8 +31,9 @@
 						<tr>
 							<th>#</th>
 							<th>Date Created</th>
+							<th>Type</th>
 							<th>Image</th>
-							<th>Title</th>
+							<th>Item Name</th>
 							<th>Status</th>
 							<th>Action</th>
 						</tr>
@@ -46,6 +47,13 @@
 							<tr>
 								<td class="align-items-center text-center"><?php echo $i++; ?></td>
 								<td class="align-items-center"><?php echo date("Y-m-d g:i A",strtotime($row['created_at'])) ?></td>
+								<td class="align-items-center text-center">
+									<?php if($row['type'] == 1): ?>
+										<span class="badge bg-success rounded-pill">Found</span>
+									<?php else: ?>
+										<span class="badge bg-danger rounded-pill">Lost</span>
+									<?php endif; ?>
+								</td>
 								<td class="align-items-center"><?= $row['fullname'] ?></td>
 								<td class="align-items-center"><p class="text-center truncate-1" style="max-width:250px"><?= $row['title'] ?></p></td>
 								<td class="align-items-center justify-content-center text-center">
