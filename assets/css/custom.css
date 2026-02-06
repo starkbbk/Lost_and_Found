@@ -1,166 +1,312 @@
-/* Deep Glassmorphism Theme Overrides */
+/* Analyca Blue Theme */
 
 :root {
-    --text-main: #2c2c2c;
-    --text-muted: #555555;
-    --primary-color: #ff9900;
-    --glass-bg: rgba(255, 255, 255, 0.45);
-    --glass-border: rgba(255, 255, 255, 0.6);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-    --border-radius: 20px;
-    --blur-amt: 15px;
+    --bg-body: #f1f5f9;
+    --bg-white: #ffffff;
+    --primary-blue: #2563eb;
+    --primary-light: #3b82f6;
+    --primary-dark: #1d4ed8;
+    --text-heading: #1e293b;
+    --text-body: #64748b;
+    --border-color: #e2e8f0;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --border-radius: 12px;
 }
 
 body {
-    background: url('../img/background.png') no-repeat center center fixed !important;
-    background-size: cover !important;
-    font-family: 'Poppins', sans-serif !important;
-    color: var(--text-main);
+    background-color: var(--bg-body) !important;
+    font-family: 'Inter', 'Poppins', sans-serif !important;
+    color: var(--text-body);
     min-height: 100vh;
 }
 
-/* Glass Mixin Class for reuse if needed, but we apply directly to components */
-
-/* Card Styling - The Core Glass Element */
-.card,
-.card-header,
-.card-footer {
-    background: var(--glass-bg) !important;
-    backdrop-filter: blur(var(--blur-amt)) !important;
-    -webkit-backdrop-filter: blur(var(--blur-amt)) !important;
-    border-radius: var(--border-radius) !important;
-    border: 1px solid var(--glass-border) !important;
-    box-shadow: var(--glass-shadow) !important;
-    color: var(--text-main);
+/* Remove old glowing pseudo-elements */
+body::before,
+body::after {
+    display: none;
 }
 
-.card-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    /* Slightly distinct header */
-}
-
-/* Navbar / Header */
+/* Header / Navbar */
 .header {
-    background: rgba(255, 255, 255, 0.3) !important;
-    backdrop-filter: blur(var(--blur-amt)) !important;
-    box-shadow: var(--glass-shadow) !important;
-    border-bottom: 1px solid var(--glass-border) !important;
-    margin-bottom: 20px;
+    background-color: var(--primary-blue) !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.header .logo span {
+    color: #ffffff !important;
+    font-weight: 700;
+    text-shadow: none;
+    font-size: 1.5rem;
+}
+
+.header .toggle-sidebar-btn {
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .header .search-bar input {
-    background: rgba(255, 255, 255, 0.5) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.header .search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.header-nav .nav-icon {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.header-nav .profile-name {
+    color: #ffffff !important;
+    font-weight: 600;
 }
 
 /* Sidebar */
 .sidebar {
-    background: var(--glass-bg) !important;
-    backdrop-filter: blur(var(--blur-amt)) !important;
-    border-right: 1px solid var(--glass-border) !important;
-    box-shadow: var(--glass-shadow);
-    margin-top: 20px;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    height: calc(100vh - 80px);
-    /* Adjust for margin */
+    background-color: var(--bg-white) !important;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.05);
+    border-right: 1px solid var(--border-color);
+    padding-top: 20px;
+    z-index: 900;
 }
 
 .sidebar-nav .nav-link {
     background: transparent !important;
-    color: var(--text-main) !important;
+    color: var(--text-body) !important;
     font-weight: 500;
-}
-
-.sidebar-nav .nav-link.active,
-.sidebar-nav .nav-link:hover {
-    background: rgba(255, 255, 255, 0.5) !important;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin: 4px 16px;
+    border-radius: 8px;
+    width: auto;
+    transition: all 0.2s ease;
 }
 
 .sidebar-nav .nav-link i {
-    color: var(--primary-color) !important;
+    color: var(--text-body) !important;
+    font-size: 1.1rem;
 }
 
-/* Stats Cards Specifics */
-.info-card {
-    background: rgba(255, 255, 255, 0.4) !important;
-    /* Slightly more transparent */
+.sidebar-nav .nav-link:hover {
+    background-color: #f8fafc !important;
+    color: var(--primary-blue) !important;
 }
 
-.info-card h6 {
-    color: var(--text-main) !important;
+.sidebar-nav .nav-link:hover i {
+    color: var(--primary-blue) !important;
+}
+
+.sidebar-nav .nav-link.active {
+    background-color: rgba(37, 99, 235, 0.1) !important;
+    color: var(--primary-blue) !important;
+}
+
+.sidebar-nav .nav-link.active i {
+    color: var(--primary-blue) !important;
+}
+
+/* General Layout */
+#main {
+    margin-top: 70px;
+    padding: 20px 30px;
+}
+
+.pagetitle h1 {
+    color: var(--text-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* Cards */
+.card {
+    background-color: var(--bg-white) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--border-radius) !important;
+    box-shadow: var(--card-shadow) !important;
+    margin-bottom: 24px;
+    border: none !important;
+}
+
+.card-body {
+    padding: 24px;
+}
+
+.card-title {
+    color: var(--text-heading) !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    padding: 0;
+}
+
+/* Dashboard Stat Cards (Blue Style) */
+.section.dashboard .stat-card .card-body {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-blue) 100%);
+    border-radius: var(--border-radius);
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    /* Ensure vertical stacking */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Reset base card styles for stat cards to avoid double background issues */
+.section.dashboard .stat-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.section.dashboard .stat-card .card-title {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.section.dashboard .stat-card h6 {
+    color: white !important;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.section.dashboard .stat-card .stat-icon {
+    color: rgba(255, 255, 255, 0.2) !important;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    top: auto;
+    font-size: 3.5rem;
 }
 
 /* Welcome Banner */
 .welcome-banner {
-    background: linear-gradient(135deg, rgba(255, 153, 0, 0.85) 0%, rgba(255, 204, 128, 0.85) 100%) !important;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: var(--bg-white) !important;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    color: var(--text-heading) !important;
+    border: 1px solid var(--border-color);
+}
+
+.welcome-banner h2 {
+    color: var(--text-heading) !important;
+    font-weight: 800;
+}
+
+.welcome-banner p {
+    color: var(--text-body) !important;
+}
+
+.welcome-banner i {
+    color: var(--primary-light) !important;
+    opacity: 0.1 !important;
+}
+
+/* Table Styles */
+.table {
+    border-color: var(--border-color);
+}
+
+.table thead th {
+    background-color: #f8fafc;
+    color: var(--text-heading);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody td {
+    color: var(--text-body);
+    vertical-align: middle;
+}
+
+/* Badges */
+.badge.bg-success {
+    background-color: #dcfce7 !important;
+    color: #166534 !important;
+    border: none;
+}
+
+.badge.bg-danger {
+    background-color: #fee2e2 !important;
+    color: #991b1b !important;
+    border: none;
+}
+
+.badge.bg-primary {
+    background-color: #dbeafe !important;
+    color: #1e40af !important;
+    border: none;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: var(--text-heading) !important;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-blue) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
 }
 
 /* Buttons */
 .btn-primary {
-    background: linear-gradient(135deg, #ff9900, #ffb74d) !important;
-    border: none !important;
-    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+    background-color: var(--primary-blue) !important;
+    border: none;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
 }
 
-/* Tables */
-.table {
-    --bs-table-bg: transparent !important;
-    background: transparent !important;
-    color: var(--text-main) !important;
+.btn-primary:hover {
+    background-color: var(--primary-dark) !important;
+    transform: translateY(-1px);
 }
 
-.table thead th {
-    background: rgba(255, 255, 255, 0.4) !important;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+/* Footer */
+#footer {
+    background: var(--bg-white);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-body);
 }
 
-.table td {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+/* Select2 Drops */
+.select2-container--default .select2-selection--single {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px;
+    height: 42px;
 }
 
-/* Inputs / Forms */
-.form-control {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    backdrop-filter: blur(5px);
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 40px;
+    color: var(--text-heading) !important;
 }
 
-.form-control:focus {
-    background-color: rgba(255, 255, 255, 0.7) !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 153, 0, 0.25);
+.select2-dropdown {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Login Page Specifics */
-body.login-page {
-    /* Background is handled globally now, but ensure no overlay blocks it */
-    background-image: url('../img/background.png') !important;
-}
-
-body.login-page::before {
-    /* If there was a dark overlay, remove or lighten it */
-    content: none !important;
-}
-
-.login-page .card {
-    background: rgba(255, 255, 255, 0.55) !important;
-    /* Little more opaque for login readability */
-}
-
-/* Dropdowns */
-.dropdown-menu {
-    background: rgba(255, 255, 255, 0.9) !important;
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
-}
-
-/* Logo */
-.logo span {
-    color: #444 !important;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--primary-blue) !important;
 }

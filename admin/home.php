@@ -1,57 +1,4 @@
-<style>
-  .welcome-banner {
-    background: linear-gradient(135deg, #ff9900 0%, #ffcc80 100%);
-    color: white;
-    border-radius: var(--border-radius);
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 20px rgba(255, 153, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-  }
-  .welcome-banner h2 {
-    color: white !important;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .welcome-banner p {
-    color: rgba(255,255,255,0.9);
-    font-size: 1.1rem;
-    margin-bottom: 0;
-  }
-  .stat-card {
-    transition: transform 0.3s ease;
-  }
-  .stat-card:hover {
-    transform: translateY(-5px);
-  }
-  .stat-card .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .stat-card h6 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 5px;
-  }
-  .stat-card .card-title {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0;
-  }
-  .stat-icon {
-    position: absolute;
-    right: 25px;
-    top: 25px;
-    font-size: 3rem;
-    opacity: 0.1;
-    color: var(--primary-color);
-  }
-</style>
+
 
 <section class="section dashboard">
     
@@ -61,7 +8,7 @@
             <div class="welcome-banner">
                 <h2>Hello, <?= $_settings->userdata('firstname') ?>!</h2>
                 <p>Welcome back to your dashboard. Here's what's happening today.</p>
-                <i class="bi bi-emoji-smile position-absolute text-white" style="font-size: 10rem; right: -20px; bottom: -40px; opacity: 0.2;"></i>
+                <i class="bi bi-emoji-smile position-absolute text-primary" style="font-size: 10rem; right: -20px; bottom: -40px; opacity: 0.1;"></i>
             </div>
         </div>
     </div>
