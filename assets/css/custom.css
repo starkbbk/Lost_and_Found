@@ -310,3 +310,31 @@ body::after {
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
     background-color: var(--primary-blue) !important;
 }
+
+/* Public Site Navbar Fixes */
+.navbar {
+    background-color: var(--primary-blue) !important;
+}
+
+.navbar .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.navbar .navbar-brand {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+.navbar .btn-primary {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.navbar .btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
