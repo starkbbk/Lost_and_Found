@@ -25,44 +25,40 @@ function run_sql_file($conn, $location){
         die("❌ SQL file not found at: $location");
     }
     //load file
-    $content = file_get_contents($location);
-    if ($content === false) {
+    $lines = file($location);
+    if ($lines === false) {
         die("❌ Could not read file content.");
     }
-    echo "✅ Read " . strlen($content) . " bytes from file.<br>";
+    echo "✅ Read " . count($lines) . " lines from file.<br>";
 
-    //delete comments
-    $lines = explode("\n",$content);
-    $commands = '';
-    foreach($lines as $line){
-        $line = trim($line);
-        if( $line && !startsWith($line,'--') ){
-            $commands .= $line . "\n";
-        }
-    }
-
-    //convert to array
-    $commands = explode(";", $commands);
-    echo "Found " . count($commands) . " commands to execute.<br>";
-
-    //run commands
+    $buffer = '';
     $total = $success = 0;
-    foreach($commands as $command){
-        if(trim($command)){
-            $result = $conn->query($command);
-            if($result){
-                $success += 1;
+    
+    foreach($lines as $line){
+        // Skip comments and empty lines if buffer is empty
+        $trimmed = trim($line);
+        if ($buffer === '' && ($trimmed === '' || startsWith($trimmed, '--'))) {
+            continue;
+        }
+
+        $buffer .= $line;
+        
+        // If line ends with semicolon, execute buffer
+        if (substr($trimmed, -1) === ';') {
+            if($conn->query($buffer)){
+                $success++;
+                echo "Executed query successfully.<br>";
             } else {
-                echo "Error executing query: " . $conn->error . "<br><pre>$command</pre><br>";
+                echo "❌ Error: " . $conn->error . "<br>";
             }
-            $total += 1;
+            $total++;
+            $buffer = '';
         }
     }
     
-    return array(
-        "success" => $success,
-        "total" => $total
-    );
+    echo "Successfully executed " . $success . " out of " . $total . " queries.<br>";
+    echo "<h3>Import Complete!</h3>";
+    echo "<p>You can now delete this file (import_db.php) and <a href='index.php'>Go to Home</a></p>";
 }
 
 function startsWith ($string, $startString) {
@@ -74,10 +70,7 @@ echo "<h2>Importing Database...</h2>";
 
 $sql_file = 'database/lfis_db.sql';
 if(file_exists($sql_file)){
-    $result = run_sql_file($conn, $sql_file);
-    echo "Successfully executed " . $result['success'] . " out of " . $result['total'] . " queries.<br>";
-    echo "<h3>Import Complete!</h3>";
-    echo "<p>You can now delete this file (import_db.php) and <a href='index.php'>Go to Home</a></p>";
+    run_sql_file($conn, $sql_file);
 } else {
     echo "Error: SQL file not found at $sql_file";
 }
