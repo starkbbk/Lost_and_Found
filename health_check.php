@@ -10,7 +10,13 @@ $host = DB_SERVER;
 $user = DB_USERNAME;
 $pass = DB_PASSWORD;
 $db   = DB_NAME;
+$raw_port = getenv('DB_PORT');
 $port = (int)DB_PORT;
+
+echo "Debug Info:\n";
+echo "- Host: $host\n";
+echo "- Raw Port (Env): " . var_export($raw_port, true) . "\n";
+echo "- Cast Port (Int): $port\n\n";
 
 echo "Attempting DB Connection to $host:$port...\n";
 
