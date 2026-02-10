@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: lost-and-found
+    env: docker
+    plan: free
+    region: singapore
+    branch: main
+    envVars:
+      - key: APP_URL
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_DATABASE
+        baseValue: defaultdb
+        sync: false

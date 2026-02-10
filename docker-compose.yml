@@ -8,10 +8,10 @@ services:
     volumes:
       - .:/var/www/html
     environment:
-      - DB_SERVER=db
+      - DB_HOST=db
       - DB_USERNAME=root
       - DB_PASSWORD=root
-      - DB_NAME=lfis_db
+      - DB_DATABASE=lfis_db
     depends_on:
       - db
 
