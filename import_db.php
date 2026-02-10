@@ -14,6 +14,13 @@ $db = new DBConnection;
 $conn = $db->conn;
 
 function run_sql_file($conn, $location){
+    // Drop existing tables to ensure clean import
+    $tables = ['category_list', 'inquiry_list', 'item_list', 'system_info', 'users'];
+    foreach ($tables as $table) {
+        $conn->query("DROP TABLE IF EXISTS `$table`");
+        echo "Dropped table `$table` (if existed).<br>";
+    }
+
     if (!file_exists($location)) {
         die("❌ SQL file not found at: $location");
     }
