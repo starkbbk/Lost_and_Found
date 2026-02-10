@@ -5,13 +5,24 @@ require_once('classes/DBConnection.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ob_implicit_flush(true);
+while (ob_get_level()) ob_end_clean();
+
 $db = new DBConnection;
 $conn = $db->conn;
 
 function run_sql_file($conn, $location){
+    if (!file_exists($location)) {
+        die("❌ SQL file not found at: $location");
+    }
     //load file
     $content = file_get_contents($location);
-    echo "Read " . strlen($content) . " bytes from file.<br>";
+    if ($content === false) {
+        die("❌ Could not read file content.");
+    }
+    echo "✅ Read " . strlen($content) . " bytes from file.<br>";
 
     //delete comments
     $lines = explode("\n",$content);
