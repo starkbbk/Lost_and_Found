@@ -338,3 +338,119 @@ body::after {
 .navbar .btn-primary:hover {
     background-color: rgba(255, 255, 255, 0.3) !important;
 }
+
+/* ---------------------------------------------------
+    MOBILE RESPONSIVENESS
+----------------------------------------------------- */
+@media (max-width: 991.98px) {
+
+    /* Header & Navigation */
+    #header {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    #header .logo img {
+        max-height: 40px;
+    }
+
+    #navbarResponsive {
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 10px 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .header-nav ul {
+        flex-direction: column;
+        /* Force vertical column */
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header-nav .nav-item {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .header-nav .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .header-nav .nav-link {
+        display: block;
+        width: 100%;
+        color: #333 !important;
+        /* Make links dark on white dropdown */
+    }
+
+    .header-nav .btn-primary {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Typography Overrides */
+    h1,
+    .h1 {
+        font-size: 1.75rem !important;
+    }
+
+    h2,
+    .h2 {
+        font-size: 1.5rem !important;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.25rem !important;
+    }
+
+    #sys_name {
+        font-size: 1.5rem !important;
+        text-align: center;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    /* Layout Adjustments */
+    #main,
+    #main_content {
+        padding-top: 80px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Footer Fix */
+    footer {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    /* Card & Image Fixes */
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+}
