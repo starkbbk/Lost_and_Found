@@ -157,31 +157,40 @@ Class Master extends DBConnection {
 			$resp['iid'] = $iid;
 			$data = "";
 			if(!empty($_FILES['image']['tmp_name'])){
-				if(!is_dir(base_app."uploads/items"))
-					mkdir(base_app."uploads/items");
-				$ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-				$fname = "uploads/items/$iid.png";
-				$accept = array('image/jpeg','image/png');
-				if(!in_array($_FILES['image']['type'],$accept)){
-					$err = "Image file type is invalid";
+				try {
+					if(!is_dir(base_app."uploads/items"))
+						mkdir(base_app."uploads/items");
+					$ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+					$fname = "uploads/items/$iid.png";
+					$accept = array('image/jpeg','image/png');
+					if(!in_array($_FILES['image']['type'],$accept)){
+						throw new Exception("Image file type is invalid");
+					}
+					$uploadfile = null;
+					if($_FILES['image']['type'] == 'image/jpeg')
+						$uploadfile = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+					elseif($_FILES['image']['type'] == 'image/png')
+						$uploadfile = imagecreatefrompng($_FILES['image']['tmp_name']);
+					
+					if(!$uploadfile){
+						throw new Exception("Image is invalid");
+					}
+					
+					list($width,$height) = getimagesize($_FILES['image']['tmp_name']);
+					if ($width && $height) {
+						$temp = imagescale($uploadfile,$width,$height);
+						if(is_file(base_app.$fname))
+							unlink(base_app.$fname);
+						$upload = imagepng($temp,base_app.$fname);
+						if($upload){
+							$this->conn->query("UPDATE `item_list` set `image_path` = CONCAT('{$fname}', '?v=',unix_timestamp(CURRENT_TIMESTAMP)) where id = '{$iid}'");
+						}
+						imagedestroy($temp);
+					}
+				} catch (Exception $e) {
+					// Log error or return it in response
+					$resp['img_error'] = $e->getMessage();
 				}
-				if($_FILES['image']['type'] == 'image/jpeg')
-					$uploadfile = imagecreatefromjpeg($_FILES['image']['tmp_name']);
-				elseif($_FILES['image']['type'] == 'image/png')
-					$uploadfile = imagecreatefrompng($_FILES['image']['tmp_name']);
-				if(!$uploadfile){
-					$err = "Image is invalid";
-				}
-				list($width,$height) = getimagesize($_FILES['image']['tmp_name']);
-				$temp = imagescale($uploadfile,$width,$height);
-				if(is_file(base_app.$fname))
-				unlink(base_app.$fname);
-				$upload =imagepng($temp,base_app.$fname);
-				if($upload){
-					$this->conn->query("UPDATE `item_list` set `image_path` = CONCAT('{$fname}', '?v=',unix_timestamp(CURRENT_TIMESTAMP)) where id = '{$iid}'");
-				}
-			
-				imagedestroy($temp);
 			}
 			if(empty($id)){
 				if(isset($type) && $type == 1)
