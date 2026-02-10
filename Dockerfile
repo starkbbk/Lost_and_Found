@@ -17,7 +17,7 @@ RUN find /etc/apache2/mods-enabled -name "mpm_*.load" -delete \
     && find /etc/apache2/mods-enabled -name "mpm_*.conf" -delete \
     && a2dismod mpm_event || true \
     && a2dismod mpm_worker || true \
-    && a2enmod mpm_prefork rewrite
+    && a2enmod mpm_prefork rewrite headers
 
 # Copy application files
 COPY . /var/www/html/
