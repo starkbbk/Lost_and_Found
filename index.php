@@ -1,5 +1,6 @@
 <?php require_once('./config.php'); ?>
 <!DOCTYPE html>
+<!-- MOBILE DEBUG CHECK: V2 -->
 <html lang="en">
 <?php require_once('inc/header.php') ?>
   <body class="toggle-sidebar">
