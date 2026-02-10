@@ -13,4 +13,5 @@ if(!defined('DB_SERVER')) define('DB_SERVER', getenv('DB_HOST') ?: "localhost");
 if(!defined('DB_USERNAME')) define('DB_USERNAME', getenv('DB_USERNAME') ?: "root");
 if(!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD') ?: "");
 if(!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE') ?: "lfis_db");
+if(!defined('DB_PORT')) define('DB_PORT', getenv('DB_PORT') ?: 3306);
 ?>

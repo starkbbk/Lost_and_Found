@@ -10,10 +10,11 @@ $host = DB_SERVER;
 $user = DB_USERNAME;
 $pass = DB_PASSWORD;
 $db   = DB_NAME;
+$port = DB_PORT;
 
-echo "Attempting DB Connection to $host...\n";
+echo "Attempting DB Connection to $host:$port...\n";
 
-$conn = new mysqli($host, $user, $pass, $db);
+$conn = new mysqli($host, $user, $pass, $db, $port);
 if ($conn->connect_error) {
     echo "Database Connection Failed: " . $conn->connect_error;
 } else {
