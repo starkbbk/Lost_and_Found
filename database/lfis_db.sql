@@ -17,9 +17,9 @@ CREATE TABLE `category_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `category_list` (`id`, `name`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Mobile Phones', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id est enim. Fusce malesuada dapibus lobortis. Maecenas commodo cursus ante, a efficitur lorem ultrices a. Cras tincidunt, leo at consequat viverra, lacus elit tempus diam, sed scelerisque turpis purus eu ex. Sed placerat, sem vel accumsan maximus, nibh massa rhoncus mi, quis lacinia nisl quam eu purus.&lt;/p&gt;', 1, '2023-05-01 10:32:44', NULL),
-(2, 'Keys', '&lt;p&gt;Nulla at tellus tristique, venenatis mauris a, commodo urna. Integer arcu quam, maximus id nulla vitae, eleifend lacinia tellus. Proin nec consequat risus. Sed et felis justo. Duis quis magna vel felis volutpat consectetur ut et enim. Integer nec auctor felis. Fusce nec mauris luctus, lacinia erat in, porttitor tellus. Nunc quis mauris velit. Sed nec libero vitae leo blandit mattis.&lt;/p&gt;', 1, '2023-05-01 10:34:27', NULL),
-(3, 'Watches', '&lt;p&gt;Etiam volutpat dictum tempor. Nulla rutrum arcu eu volutpat pharetra. Aliquam non luctus ex. Maecenas nibh ipsum, efficitur in dui at, rhoncus convallis orci. Duis bibendum tempor sapien, non sollicitudin massa porttitor sed.&lt;/p&gt;', 1, '2023-05-01 10:35:58', '2023-05-01 10:36:15');
+(1, 'Mobile Phones', 'Mobile Phones Category', 1, '2023-05-01 10:32:44', NULL),
+(2, 'Keys', 'Keys Category', 1, '2023-05-01 10:34:27', NULL),
+(3, 'Watches', 'Watches Category', 1, '2023-05-01 10:35:58', '2023-05-01 10:36:15');
 
 CREATE TABLE `inquiry_list` (
   `id` bigint(30) NOT NULL AUTO_INCREMENT,
@@ -34,7 +34,7 @@ CREATE TABLE `inquiry_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `inquiry_list` (`id`, `fullname`, `contact`, `email`, `message`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Jane Doe', '09123546788', 'jdoe@mail.com', 'Vestibulum suscipit felis at magna congue gravida. Quisque interdum eu odio sed vulputate.', 1, '2023-05-01 14:11:19', '2023-05-01 14:25:47');
+(1, 'Jane Doe', '09123546788', 'jdoe@mail.com', 'Sample Inquiry Message', 1, '2023-05-01 14:11:19', '2023-05-01 14:25:47');
 
 CREATE TABLE `item_list` (
   `id` bigint(30) NOT NULL AUTO_INCREMENT,
@@ -53,10 +53,10 @@ CREATE TABLE `item_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `item_list` (`id`, `category_id`, `fullname`, `title`, `description`, `contact`, `image_path`, `status`, `created_at`, `updated`) VALUES
-(1, 2, 'Mark Cooper', 'Found Keys at Central Park', 'Suspendisse nisl diam, pretium ut placerat nec, pellentesque in tortor. Suspendisse vitae arcu a mi dapibus elementum ac dignissim tellus. Duis vitae molestie lacus, porttitor lacinia justo. Ut vulputate, ipsum interdum consequat mollis, odio nisl vulputate est, quis ornare nisi massa a odio.', '09123564789', 'uploads/items/1.png?v=1682912925', 1, '2023-05-01 11:48:45', '2023-05-01 11:48:45'),
-(3, 1, 'Claire Blake', 'Found an Android Phone @ Restaurant Parking Lot', 'Etiam accumsan quis augue a pulvinar. Etiam pretium sodales ipsum, cursus venenatis urna fringilla vel. Nunc fringilla non magna sit amet pharetra. Nam iaculis rutrum eleifend. Mauris rutrum, urna eget rhoncus consequat, purus mauris luctus orci, at venenatis ex elit sed risus.', '09123654897', 'uploads/items/3.png?v=1682916949', 1, '2023-05-01 12:55:48', '2023-05-01 12:55:49'),
-(5, 3, 'Samantha Lou', 'Found a Watch left @ Room 101', 'Sed ultricies turpis eget commodo condimentum. Nam ac lorem vitae nulla fringilla imperdiet sit amet a arcu. Maecenas malesuada felis eleifend condimentum porttitor. Cras sed metus nec nibh interdum bibendum sit amet at sem.', '09457778988', 'uploads/items/5.png?v=1682917427', 1, '2023-05-01 13:03:47', '2023-05-01 13:03:47'),
-(6, 1, 'Wilson Smith', 'Found Something @ The Mall', 'Donec metus sem, volutpat id mi in, fringilla aliquet odio. Donec eleifend sem et ex maximus tristique. Donec porttitor venenatis aliquet. Aliquam tristique est sed nulla fermentum aliquam eget sed ex', '09123564789', NULL, 2, '2023-05-01 13:34:29', '2023-05-01 14:04:10');
+(1, 2, 'Mark Cooper', 'Found Keys at Central Park', 'Sample Description', '09123564789', 'uploads/items/1.png?v=1682912925', 1, '2023-05-01 11:48:45', '2023-05-01 11:48:45'),
+(3, 1, 'Claire Blake', 'Found an Android Phone', 'Sample Description', '09123654897', 'uploads/items/3.png?v=1682916949', 1, '2023-05-01 12:55:48', '2023-05-01 12:55:49'),
+(5, 3, 'Samantha Lou', 'Found a Watch', 'Sample Description', '09457778988', 'uploads/items/5.png?v=1682917427', 1, '2023-05-01 13:03:47', '2023-05-01 13:03:47'),
+(6, 1, 'Wilson Smith', 'Found Something', 'Sample Description', '09123564789', NULL, 2, '2023-05-01 13:34:29', '2023-05-01 14:04:10');
 
 CREATE TABLE `system_info` (
   `id` int(30) NOT NULL AUTO_INCREMENT,
