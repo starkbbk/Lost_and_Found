@@ -10,7 +10,7 @@ $host = DB_SERVER;
 $user = DB_USERNAME;
 $pass = DB_PASSWORD;
 $db   = DB_NAME;
-$port = DB_PORT;
+$port = (int)DB_PORT;
 
 echo "Attempting DB Connection to $host:$port...\n";
 
