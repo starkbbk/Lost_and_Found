@@ -2,6 +2,9 @@
 // Define base_url dynamically or via ENV
 if(!defined('base_url')){
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https://" : "http://";
+    if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'){
+        $protocol = "https://";
+    }
     $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
     define('base_url', getenv('APP_URL') ?: $protocol . $host . '/');
 }
