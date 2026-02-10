@@ -2,6 +2,9 @@
 require_once('initialize.php');
 require_once('classes/DBConnection.php');
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $db = new DBConnection;
 $conn = $db->conn;
 
@@ -26,7 +29,12 @@ function run_sql_file($conn, $location){
     $total = $success = 0;
     foreach($commands as $command){
         if(trim($command)){
-            $success += (@$conn->query($command)==false ? 0 : 1);
+            $result = $conn->query($command);
+            if($result){
+                $success += 1;
+            } else {
+                echo "Error executing query: " . $conn->error . "<br><pre>$command</pre><br>";
+            }
             $total += 1;
         }
     }
