@@ -10,10 +10,11 @@ $conn = $db->conn;
 
 function run_sql_file($conn, $location){
     //load file
-    $commands = file_get_contents($location);
+    $content = file_get_contents($location);
+    echo "Read " . strlen($content) . " bytes from file.<br>";
 
     //delete comments
-    $lines = explode("\n",$commands);
+    $lines = explode("\n",$content);
     $commands = '';
     foreach($lines as $line){
         $line = trim($line);
@@ -24,6 +25,7 @@ function run_sql_file($conn, $location){
 
     //convert to array
     $commands = explode(";", $commands);
+    echo "Found " . count($commands) . " commands to execute.<br>";
 
     //run commands
     $total = $success = 0;
