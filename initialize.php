@@ -2,11 +2,32 @@
 // Define base_url dynamically or via ENV
 if(!defined('base_url')){
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https://" : "http://";
-    if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'){
+    
+    // Check for proxy headers (Render, etc.)
+    if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false){
         $protocol = "https://";
     }
+    
     $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
-    define('base_url', getenv('APP_URL') ?: $protocol . $host . '/');
+    
+    // Force HTTPS on Render domains
+    if (strpos($host, 'onrender.com') !== false) {
+        $protocol = "https://";
+    }
+    
+    $env_url = getenv('APP_URL');
+    
+    // Use ENV URL if set, but fix protocol if needed
+    if ($env_url) {
+        if ($protocol === 'https://' && strpos($env_url, 'http://') === 0) {
+            $env_url = str_replace('http://', 'https://', $env_url);
+        }
+        // Ensure trailing slash
+        if(substr($env_url, -1) !== '/') $env_url .= '/';
+        define('base_url', $env_url);
+    } else {
+        define('base_url', $protocol . $host . '/');
+    }
 }
 
 if(!defined('base_app')) define('base_app', str_replace('\\','/',__DIR__).'/' );
