@@ -23,7 +23,7 @@
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
         <?php 
-        $lost = $conn->query("SELECT * FROM `item_list` where `status` = 1 and `type` = 2 order by unix_timestamp(`date_created`) desc limit 3");
+        $lost = $conn->query("SELECT * FROM `item_list` where `status` = 1 and `type` = 2 order by unix_timestamp(`created_at`) desc limit 3");
         while($row = $lost->fetch_assoc()):
         ?>
         <div class="col">
@@ -49,7 +49,7 @@
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
         <?php 
-        $found = $conn->query("SELECT * FROM `item_list` where `status` = 1 and `type` = 1 order by unix_timestamp(`date_created`) desc limit 3");
+        $found = $conn->query("SELECT * FROM `item_list` where `status` = 1 and `type` = 1 order by unix_timestamp(`created_at`) desc limit 3");
         while($row = $found->fetch_assoc()):
         ?>
         <div class="col">

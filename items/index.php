@@ -41,7 +41,7 @@
             if(isset($cat['id'])){
                 $where = " and `category_id` = '{$cat['id']}'";
             }
-            $items = $conn->query("SELECT * FROM `item_list` where `status` = 1 {$where} order by unix_timestamp(`date_created`) desc")->fetch_all(MYSQLI_ASSOC);
+            $items = $conn->query("SELECT * FROM `item_list` where `status` = 1 {$where} order by unix_timestamp(`created_at`) desc")->fetch_all(MYSQLI_ASSOC);
             ?>
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
@@ -64,7 +64,7 @@
                                         <?= strip_tags(htmlspecialchars_decode($row['description'])) ?>
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-white border-opacity-10">
-                                        <span class="small text-muted"><i class="bi bi-clock me-1"></i><?= date("M d, Y", strtotime($row['date_created'])) ?></span>
+                                        <span class="small text-muted"><i class="bi bi-clock me-1"></i><?= date("M d, Y", strtotime($row['created_at'])) ?></span>
                                         <span class="btn btn-sm btn-link text-accent-glow p-0 text-decoration-none fw-bold">View Detail <i class="bi bi-arrow-right ms-1"></i></span>
                                     </div>
                                 </div>
