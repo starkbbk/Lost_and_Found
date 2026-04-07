@@ -23,9 +23,12 @@ class DBConnection{
                 echo 'Cannot connect to database server. Please check your configuration.';
                 exit;
             }
-            
             // Auto-patch missing columns from bad SQL dumps seamlessly
-            @$this->conn->query("ALTER TABLE `item_list` ADD COLUMN `type` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Found, 2=Lost'");
+            try {
+                $this->conn->query("ALTER TABLE `item_list` ADD COLUMN `type` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Found, 2=Lost'");
+            } catch (Exception $e) {
+                // Ignore if it already exists
+            }
         }    
         
     }
