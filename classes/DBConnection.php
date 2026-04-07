@@ -22,7 +22,10 @@ class DBConnection{
                 error_log('Database Connection Error: ' . $this->conn->connect_error);
                 echo 'Cannot connect to database server. Please check your configuration.';
                 exit;
-            }            
+            }
+            
+            // Auto-patch missing columns from bad SQL dumps seamlessly
+            @$this->conn->query("ALTER TABLE `item_list` ADD COLUMN `type` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Found, 2=Lost'");
         }    
         
     }
