@@ -1,15 +1,15 @@
 <div class="col-12 px-0">
-    <div class="welcome-container mb-5">
-        <div class="glass-card p-5">
-            <h2 class="display-4 fw-bold mb-4">Welcome to <?= $_settings->info('name') ?></h2>
-            <div class="row">
-                <div class="col-md-6 border-end border-white border-opacity-10">
-                    <p class="lead text-muted mb-4"><?php echo is_file(base_app.'pages/welcome.html') ? file_get_contents((base_app.'pages/welcome.html')) : 'Your trusted platform for recovering lost belongings and returning found items to their rightful owners.' ?></p>
+    <div class="quick-actions-container mb-5 mt-n4 position-relative" style="z-index: 10;">
+        <div class="glass-card p-4 rounded-4 shadow-lg border-white border-opacity-10">
+            <div class="row align-items-center">
+                <div class="col-md-6 border-end border-white border-opacity-10 text-center text-md-start mb-3 mb-md-0">
+                    <h4 class="fw-bold mb-1"><i class="bi bi-lightning-charge text-warning me-2"></i>Quick Actions</h4>
+                    <p class="text-muted small mb-0">Report an item securely to our system to help our community.</p>
                 </div>
                 <div class="col-md-6 ps-md-4">
-                    <div class="d-flex gap-3 mt-2">
-                        <a href="./?page=found" class="btn btn-primary btn-lg flex-grow-1">Report Found Item</a>
-                        <a href="./?page=lost" class="btn btn-outline-light btn-lg flex-grow-1">Report Lost Item</a>
+                    <div class="d-flex gap-3 justify-content-center justify-content-md-end">
+                        <a href="./?page=found" class="btn btn-primary btn-lg px-4 fw-bold shadow"><i class="bi bi-check-circle me-2"></i>Report Found Item</a>
+                        <a href="./?page=lost" class="btn btn-outline-light btn-lg px-4 fw-bold shadow-sm"><i class="bi bi-search me-2"></i>Report Lost Item</a>
                     </div>
                 </div>
             </div>
@@ -82,10 +82,9 @@
         object-fit: cover;
         border-bottom: 1px solid var(--glass-border);
     }
-    .welcome-container .lead {
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+    .item-card img {
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--glass-border);
     }
 </style>
