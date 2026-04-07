@@ -15,11 +15,12 @@ class DBConnection{
     public function __construct(){
 
         if (!isset($this->conn)) {
-            
+            $this->port = (int)$this->port;
             $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database, $this->port);
             
-            if (!$this->conn) {
-                echo 'Cannot connect to database server';
+            if ($this->conn->connect_error) {
+                error_log('Database Connection Error: ' . $this->conn->connect_error);
+                echo 'Cannot connect to database server. Please check your configuration.';
                 exit;
             }            
         }    

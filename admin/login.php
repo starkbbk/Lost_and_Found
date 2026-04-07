@@ -26,72 +26,98 @@
       text-shadow:0px 0px 10px #000;
     }
   </style>
-  <main>
+  <main class="d-flex align-items-center justify-content-center min-vh-100">
     <div class="container">
-
-      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <section class="section register d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+          <div class="row justify-content-center w-100">
+            <div class="col-lg-4 col-md-8 col-sm-10">
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="index.html" class="logo d-flex align-items-center w-auto">
-                  <img src="<?= base_url ?>uploads/logo.jpg" alt="">
-                  <span class="d-none d-lg-block text-center"><?= $_settings->info('name') ?></span>
+              <div class="text-center mb-5 mt-n4">
+                <a href="<?= base_url ?>" class="logo d-inline-flex align-items-center justify-content-center gap-3 text-decoration-none">
+                  <img src="<?= base_url ?>uploads/logo.jpg" class="rounded-circle border border-white border-opacity-10 shadow-lg" style="width: 60px; height: 60px; object-fit: cover;" alt="">
+                  <span class="site-title-glass"><?= $_settings->info('name') ?></span>
                 </a>
-              </div><!-- End Logo -->
+              </div>
 
-              <div class="card mb-3">
+              <div class="glass-card p-4 p-md-5 shadow-2xl">
+                <div class="text-center mb-5">
+                    <h2 class="fw-black text-accent-glow mb-2">Admin Login</h2>
+                    <p class="text-muted small">Please enter your credentials to access the dashboard.</p>
+                </div>
 
-                <div class="card-body">
-
-                  <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your username & password to login</p>
+                <form class="row g-4 needs-validation" novalidate id="login-frm">
+                  <div class="col-12">
+                    <label for="yourUsername" class="form-label fw-bold text-accent-glow small text-uppercase letter-spacing-1">Username</label>
+                    <div class="input-group has-validation shadow-inner">
+                      <span class="input-group-text glass-input border-end-0" id="inputGroupPrepend"><i class="bi bi-person"></i></span>
+                      <input type="text" name="username" class="form-control glass-input border-start-0" id="yourUsername" placeholder="Enter username" required>
+                      <div class="invalid-feedback">Please enter your username.</div>
+                    </div>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate id="login-frm">
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                  <div class="col-12">
+                    <label for="yourPassword" class="form-label fw-bold text-accent-glow small text-uppercase letter-spacing-1">Password</label>
+                    <div class="input-group has-validation shadow-inner">
+                      <span class="input-group-text glass-input border-end-0" id="inputGroupPrepend"><i class="bi bi-lock"></i></span>
+                      <input type="password" name="password" class="form-control glass-input border-start-0" id="yourPassword" placeholder="Enter password" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
+                  </div>
 
-                    <!-- <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>
-                    </div> -->
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
-                    </div>
-                    <!-- <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
-                    </div> -->
-                  </form>
-
-                </div>
+                  <div class="col-12 mt-5">
+                    <button class="btn btn-primary btn-lg w-100 py-3 shadow-glow fw-black" type="submit">
+                        <i class="bi bi-box-arrow-in-right me-2"></i> Log In
+                    </button>
+                  </div>
+                  
+                  <div class="col-12 text-center mt-4">
+                      <a href="<?= base_url ?>" class="btn btn-link text-muted text-decoration-none small"><i class="bi bi-arrow-left me-1"></i> Back to Site</a>
+                  </div>
+                </form>
               </div>
+
+              <p class="text-center text-muted small mt-5 opacity-50">&copy; <?= date("Y") ?> <?= $_settings->info('name') ?>. All rights reserved.</p>
 
             </div>
           </div>
         </div>
-
       </section>
-
     </div>
   </main>
+
+<style>
+    .site-title-glass {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 2rem;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .fw-black { font-weight: 900; }
+    .text-accent-glow { color: var(--accent-glow) !important; }
+    .letter-spacing-1 { letter-spacing: 0.1em; }
+    .glass-input {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+        padding: 12px 16px !important;
+    }
+    .glass-input:focus {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: var(--accent-vibrant) !important;
+        box-shadow: none !important;
+    }
+    .input-group-text.glass-input {
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: var(--accent-glow) !important;
+    }
+    .shadow-glow { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4) !important; }
+    .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important; }
+    .mt-n4 { margin-top: -1.5rem !important; }
+</style>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- jQuery -->

@@ -33,9 +33,9 @@ if(!defined('base_url')){
 if(!defined('base_app')) define('base_app', str_replace('\\','/',__DIR__).'/' );
 
 // Database Credentials - Use ENV if available, else fallback to localhost defaults
-if(!defined('DB_SERVER')) define('DB_SERVER', getenv('DB_HOST') ?: "localhost");
-if(!defined('DB_USERNAME')) define('DB_USERNAME', getenv('DB_USERNAME') ?: "root");
-if(!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD') ?: "");
-if(!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE') ?: "lfis_db");
-if(!defined('DB_PORT')) define('DB_PORT', getenv('DB_PORT') ?: 3306);
+if(!defined('DB_SERVER')) define('DB_SERVER', trim(getenv('DB_HOST')) ?: "localhost");
+if(!defined('DB_USERNAME')) define('DB_USERNAME', trim(getenv('DB_USERNAME')) ?: "root");
+if(!defined('DB_PASSWORD')) define('DB_PASSWORD', trim(getenv('DB_PASSWORD')) ?: "");
+if(!defined('DB_NAME')) define('DB_NAME', trim(getenv('DB_DATABASE')) ?: "lfis_db");
+if(!defined('DB_PORT')) define('DB_PORT', trim(getenv('DB_PORT')) ?: 3306);
 ?>

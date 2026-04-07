@@ -28,11 +28,13 @@
       <main id="main" class="main">
         <?php if(in_array($page, ['home'])): ?>
           <div class="col-12">
-            <div id="site-header" style="--bg: url(<?= validate_image($_settings->info('cover')) ?>)">
+            <div id="site-header" class="glass-hero" style="--bg: url(<?= validate_image($_settings->info('cover')) ?>)">
               <div class="header-content">
                 <div class="siteTitle"><?= $_settings->info('name') ?></div>
-                <hr class="border-light opacity-100 mx-auto" style="width:100px;border-width:3px">
-                <a href="<?= base_url.'?page=items' ?>" class="btn btn-lg btn-primary rounded-pill col-lg-3 col-md-5 col-sm-7 col-10 mx-auto d-block">Browse Items</a>
+                <p class="siteSubtitle">Recover what's lost, return what's found.</p>
+                <div class="d-flex justify-content-center mt-4">
+                  <a href="<?= base_url.'?page=items' ?>" class="btn btn-lg btn-primary shadow-lg px-5">Browse All Items</a>
+                </div>
               </div>
             </div>
           </div>
